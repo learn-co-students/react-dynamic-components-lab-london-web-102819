@@ -1,14 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class ColorBox extends Component {
-
   render() {
-    return (
-      <div className="color-box" style={{opacity: 2}}>   //Note: The style attribute accepts a JavaScript object with camelCased properties rather than a CSS string
-        {/* your conditional code here! */}
-      </div>
-    )
+    const opacityValue = this.props.opacity;
+    if (opacityValue >= 0.2) {
+      return (
+        <div className="color-box" style={{ opacity: opacityValue }}>
+          <ColorBox opacity={opacityValue - 0.1} />
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
-
 }
 
+//Note: The style attribute accepts
+//a JavaScript object with camelCased
+//properties rather than a CSS string
